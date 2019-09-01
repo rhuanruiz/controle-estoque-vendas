@@ -69,7 +69,15 @@ public class ProjetoLoja {
 				System.out.println(A.produtoLiq[i].nome);
 			}
 		}
-	}   
+	} 
+	
+	public static void listarVendas(Admin A) {
+		int g = 1;
+        while(A.vendas[g] != null){
+            System.out.println("Venda " + g + " - " + A.vendas[g].nome);
+            g++;
+        }
+	}
 }
                                 
                    

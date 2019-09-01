@@ -1,5 +1,8 @@
 package projeto.loja;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 public class Main {
 	
@@ -8,12 +11,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 	
-		Cliente[] cliente;
-		cliente = new Cliente[500];
-		Cliente cliente1 = new Cliente("John", 1);
-		cliente[1] = cliente1;
 		
-        Admin A = new Admin();
+        /*Admin A = new Admin();
         
         int c = 1;
         do{  
@@ -46,7 +45,7 @@ public class Main {
                         break;
                     case 3: 
                         System.out.println("Digite a quantidade de clientes que deseja cadastrar");
-                        Cliente.cadastrarCliente(cliente, sc.nextInt());
+                        //Cliente.cadastrarCliente(cliente, sc.nextInt());
                         break;
                     case 4:
                         ProjetoLoja.listarProdutosSolidosDisponiveis(A);
@@ -77,12 +76,13 @@ public class Main {
                         break;
                     case 8: 
                         int x = 1;
-                        while (cliente[x] != null){
-                            System.out.println("Cliente "+  x + " - " + cliente[x].nome);
+                        /*while (cliente2[x] != null){
+                            System.out.println("Cliente "+  x + " - " + cliente2[x].nome);
                             x++;
                         }
                         break;
                     case 9:
+                    	
                         int g = 1;
                         while(A.vendas[g] != null){
                             System.out.println("Venda " +g+ " - "+A.vendas[g].nome );
@@ -103,20 +103,20 @@ public class Main {
                 while (i < cc){
                     i++;
                 }
-                Cliente cliente2 = cliente[i];
-                System.out.println("Bem vindo "+cliente2.nome+"!");
+                //Cliente cliente3 = cliente2[i];
+                //System.out.println("Bem vindo "+cliente3.nome+"!");
                 System.out.println("1- Comprar produtos solidos");
                 System.out.println("2- Comprar produtos liquidos");
                 switch(sc.nextInt()){
                     case 1:
                         A.listarProdutosSolidos();
-                        Venda.comprarProdutoSolido(cliente2, A);
+                       // Venda.comprarProdutoSolido(cliente3, A);
                         main(args);
                                 
                         break;
                     case 2:
                         A.listarProdutosLiquidos();
-                        Venda.comprarProdutoLiquido(cliente2, A);
+                        //Venda.comprarProdutoLiquido(cliente3, A);
                         main(args);
                         break;      
                 }
@@ -126,6 +126,6 @@ public class Main {
             default:
                     break;
         }
-        } while(c != 0);
+        } while(c != 0);*/
 	}        
 }

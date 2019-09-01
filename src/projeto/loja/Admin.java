@@ -1,20 +1,20 @@
 package projeto.loja;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 public class Admin {
-    // variaveis para localizar espaco vazio e colocar o objeto e tambem para lembra qual foi o ultimo espaco utilizado.
+   
     private int ultimoLiquido=1, ultimoSolido=1;
-    //variaveis para estoque do solido e do liquido
     private int estoqueLiq = 0;
     private int estoqueSoli = 0;
-    //Array de produto liquido e produto solido
+   
     static ProdutoLiquido[] produtoLiq;
     static ProdutoSolido[] produtoSoli;
     static Produto[] vendas;
+    
     Scanner entrada = new Scanner (System.in);
     
-    
-    //Construtor
     public Admin() {
             produtoLiq = new ProdutoLiquido [500];
             ProdutoLiquido produtoL = new ProdutoLiquido("Agua Mineral", "01", 1);
@@ -39,19 +39,14 @@ public class Admin {
                 System.out.println("O estoque esta cheio!");
             }else{
                 System.out.println("\n/////////////// Cadastrando Produto Liquido \\\\\\\\\\\\\\\\\\");
-                System.out.println("Digite o nome do Produto, por favor ");
-                String nome=entrada.nextLine();
-                System.out.println("Digite a marca do Produto, por favor ");
-                String marca = entrada.nextLine();
-                System.out.println("Digite o preço: ");
-                double preco=entrada.nextDouble();
+                String nome = (JOptionPane.showInputDialog(null, "Digite o nome do produto: "));
+                String marca = (JOptionPane.showInputDialog(null, "Digite a marca do produto: "));    
+                double preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o preco: "));
                 ProdutoLiquido produto = new ProdutoLiquido (nome,marca,preco);
                 produtoLiq[ultimoLiquido]=produto;
-                System.out.println("Digite a quantidade que tem desse produto");
-                int estoque =entrada.nextInt();
+                int estoque = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a quantidade do estoque do produto: "));
                 produtoLiq[ultimoLiquido].setEstoque(estoque);
-                System.out.println("Digite o volume em litros em cada Unidade: ");
-                double volume =entrada.nextDouble();
+                double volume = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o volume em litros de cada unidade: "));
                 entrada.nextLine();
                 produtoLiq[ultimoLiquido].setQuantidade(volume);
                 ultimoLiquido= ultimoLiquido+1;
@@ -67,19 +62,14 @@ public class Admin {
                 System.out.println("O estoque esta cheio!");
             }else{
                 System.out.println("\n///////////// Cadastrando Produto Solido \\\\\\\\\\\\\\\\");
-                System.out.println("Digite o nome do Produto, por favor ");
-                String nome=entrada.nextLine();
-                System.out.println("Digite a marca do Produto, por favor ");
-                String marca = entrada.nextLine();
-                System.out.println("Digite o Preço: ");
-                double preco=entrada.nextDouble(); 
+                String nome = (JOptionPane.showInputDialog(null, "Digite o nome do produto: "));
+                String marca = (JOptionPane.showInputDialog(null, "Digite a marca do produto: "));
+                double preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o preco: ")); 
                 ProdutoSolido produto = new ProdutoSolido (nome,marca,preco);
                 produtoSoli[ultimoSolido]=produto;
-                System.out.println("Digite a quantidade que tem desse produto:");
-                int estoque =entrada.nextInt();
+                int estoque = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a quantidade do estoque do produto: "));
                 produtoSoli[ultimoSolido].setEstoque(estoque);
-                System.out.println("Digite o volume em kg: ");
-                double volume =entrada.nextDouble();
+                double volume = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o volume em litros de cada unidade: "));
                 entrada.nextLine();                
                 produtoSoli[ultimoSolido].setPeso(volume);
                 ultimoSolido= ultimoSolido+1;
@@ -90,7 +80,7 @@ public class Admin {
     
     public void retirarProdutoLiquido(int cod){
         if (produtoLiq[cod-1].getNome()==null){
-        	System.out.println("Não tem produto Com esse codigo!!");
+        	System.out.println("Nao ha produto com este codigo!!");
         }else{
         	produtoLiq[cod-1].setEstoque(0);
         	produtoLiq[cod-1].setMarca(null);
@@ -102,7 +92,7 @@ public class Admin {
   
     public void retirarProdutoSolido(int cod){
     	if (produtoSoli[cod-1].getNome()==null){
-    		System.out.println("Não tem produto Com esse codigo!!");
+    		System.out.println("Nao ha produto com este codigo!!");
     	}else{
     		produtoSoli[cod-1].setEstoque(0);
     		produtoSoli[cod-1].setMarca(null);
@@ -154,7 +144,7 @@ public class Admin {
     }
     
     public boolean listarProdutosLiquidos(){
-    System.out.println("Produtos Líquidos: \n");
+    System.out.println("Produtos Liquidos: \n");
     for(int i=0; produtoLiq[i]!= null; i++){
         System.out.println(i+ "-" + produtoLiq[i].getNome()); 
        
@@ -163,7 +153,7 @@ public class Admin {
 }
     
     public boolean listarProdutosSolidos(){
-    System.out.println("Produtos Líquidos: \n");
+    System.out.println("Produtos Solidos: \n");
     for(int i=0; produtoSoli[i]!= null; i++){
         System.out.println(i+ "-" + produtoSoli[i].getNome()); 
        
